@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ArtZone - Digital Art Gallery</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f0f0f;
+      color: white;
+    }
+
+    header {
+      text-align: center;
+      padding: 35px 15px;
+      background: #181818;
+    }
+
+    header h1 {
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #aaa;
+    }
+
+    nav {
+      text-align: center;
+      padding: 15px;
+      background: #222;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: bold;
+    }
+
+    /* ADS AREA */
+    .ad-box {
+      max-width: 900px;
+      height: 100px;
+      margin: 25px auto;
+      border: 1px dashed #777;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+      background: #151515;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .title {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #1c1c1c;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,.4);
+    }
+
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #aaa;
+      margin-bottom: 15px;
+    }
+
+    .button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #ff9800;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: #e68900;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 30px;
+      text-align: center;
+      background: #181818;
+      color: #888;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🎨 ArtZone</h1>
+    <p>Digital Art • Gaming Inspired Art • Creative Designs</p>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#about">About</a>
+  </nav>
+
+  <!-- TOP ADVERTISEMENT -->
+  <div class="ad-box">
+    📢 Advertisement
+  </div>
+
+  <div class="container">
+
+    <h2 class="title" id="gallery">
+      🔥 Latest Art
+    </h2>
+
+    <div class="gallery">
+
+      <div class="card">
+        <img
+          src="https://via.placeholder.com/600x700?text=Your+Art"
+          alt="Digital Art">
+
+        <div class="card-content">
+          <h2>Epic Warrior</h2>
+          <p>Gaming Inspired Digital Art</p>
+
+          <button class="button" onclick="supportArt()">
+            ❤️ Support Artist
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          src="https://via.placeholder.com/600x700?text=Your+Art"
+          alt="Digital Art">
+
+        <div class="card-content">
+          <h2>Dark Hero</h2>
+          <p>Original Digital Artwork</p>
+
+          <button class="button" onclick="supportArt()">
+            ❤️ Support Artist
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          src="https://via.placeholder.com/600x700?text=Your+Art"
+          alt="Digital Art">
+
+        <div class="card-content">
+          <h2>Fire Warrior</h2>
+          <p>Gaming Inspired Artwork</p>
+
+          <button class="button" onclick="supportArt()">
+            ❤️ Support Artist
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MIDDLE ADVERTISEMENT -->
+    <div class="ad-box">
+      📢 Advertisement
+    </div>
+
+    <section id="about">
+      <h2 class="title">About ArtZone</h2>
+
+      <p style="text-align:center;color:#aaa;line-height:1.7;">
+        Welcome to ArtZone! Here you can discover
+        original digital artwork and gaming-inspired creations.
+      </p>
+    </section>
+
+  </div>
+
+  <!-- BOTTOM ADVERTISEMENT -->
+  <div class="ad-box">
+    📢 Advertisement
+  </div>
+
+  <footer>
+    © 2026 ArtZone | All Rights Reserved
+  </footer>
+
+  <script>
+    function supportArt() {
+      alert(
+        "Thank you for supporting the artist! ❤️\n\n" +
+        "Payment option हम अगले स्टेप में जोड़ेंगे।"
+      );
+    }
+  </script>
+
+</body>
+</html>
