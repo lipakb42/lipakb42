@@ -1,242 +1,681 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ArtZone - Digital Art Gallery</title>
+<title>ArtZone | Digital Art Gallery</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f0f0f;
-      color: white;
-    }
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#08080d;
+  color:#fff;
+}
 
-    header {
-      text-align: center;
-      padding: 35px 15px;
-      background: #181818;
-    }
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(8,8,13,.95);
+  border-bottom:1px solid #292933;
+  padding:15px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
 
-    header h1 {
-      font-size: 35px;
-      margin-bottom: 10px;
-    }
+.logo{
+  font-size:24px;
+  font-weight:bold;
+}
 
-    header p {
-      color: #aaa;
-    }
+.logo span{
+  color:#ff9f00;
+}
 
-    nav {
-      text-align: center;
-      padding: 15px;
-      background: #222;
-    }
+nav a{
+  color:#ddd;
+  text-decoration:none;
+  margin:0 10px;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 12px;
-      font-weight: bold;
-    }
+.login-btn{
+  background:#ff9f00;
+  color:#111;
+  border:0;
+  padding:10px 18px;
+  border-radius:20px;
+  font-weight:bold;
+}
 
-    /* ADS AREA */
-    .ad-box {
-      max-width: 900px;
-      height: 100px;
-      margin: 25px auto;
-      border: 1px dashed #777;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #777;
-      background: #151515;
-    }
+.hero{
+  min-height:430px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:60px 20px;
+  background:
+    radial-gradient(circle at center,#402000 0,#08080d 60%);
+}
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px;
-    }
+.hero h1{
+  font-size:clamp(38px,8vw,72px);
+  margin-bottom:15px;
+}
 
-    .title {
-      text-align: center;
-      margin: 20px 0;
-    }
+.hero h1 span{
+  color:#ff9f00;
+}
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
+.hero p{
+  color:#aaa;
+  font-size:18px;
+  margin-bottom:25px;
+}
 
-    .card {
-      background: #1c1c1c;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 5px 20px rgba(0,0,0,.4);
-    }
+.hero-btn{
+  display:inline-block;
+  padding:14px 28px;
+  background:#ff9f00;
+  color:#111;
+  text-decoration:none;
+  border-radius:30px;
+  font-weight:bold;
+}
 
-    .card img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      display: block;
-    }
+.ad{
+  max-width:900px;
+  min-height:90px;
+  margin:25px auto;
+  border:1px dashed #444;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#777;
+  background:#101016;
+}
 
-    .card-content {
-      padding: 15px;
-    }
+.container{
+  width:90%;
+  max-width:1200px;
+  margin:auto;
+}
 
-    .card h2 {
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
+.section-title{
+  text-align:center;
+  margin:45px 0 20px;
+  font-size:30px;
+}
 
-    .card p {
-      color: #aaa;
-      margin-bottom: 15px;
-    }
+.search{
+  width:100%;
+  max-width:600px;
+  margin:20px auto;
+  display:block;
+  padding:15px 20px;
+  border-radius:30px;
+  border:1px solid #333;
+  background:#15151d;
+  color:white;
+  outline:none;
+}
 
-    .button {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      background: #ff9800;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.categories{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:20px 0 30px;
+}
 
-    .button:hover {
-      background: #e68900;
-    }
+.category{
+  border:1px solid #444;
+  background:#15151d;
+  color:#ddd;
+  padding:9px 17px;
+  border-radius:20px;
+  cursor:pointer;
+}
 
-    footer {
-      margin-top: 40px;
-      padding: 30px;
-      text-align: center;
-      background: #181818;
-      color: #888;
-    }
-  </style>
+.category:hover{
+  background:#ff9f00;
+  color:#111;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:22px;
+}
+
+.card{
+  background:#15151d;
+  border:1px solid #292933;
+  border-radius:18px;
+  overflow:hidden;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:#ff9f00;
+}
+
+.card img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  display:block;
+}
+
+.card-content{
+  padding:17px;
+}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.card p{
+  color:#999;
+  margin-bottom:14px;
+}
+
+.price{
+  color:#ffb52e;
+  font-size:20px;
+  font-weight:bold;
+}
+
+.buy{
+  width:100%;
+  margin-top:14px;
+  padding:12px;
+  border:0;
+  border-radius:10px;
+  background:#ff9f00;
+  color:#111;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.buy:hover{
+  background:#ffb52e;
+}
+
+.about{
+  text-align:center;
+  max-width:800px;
+  margin:60px auto;
+  color:#aaa;
+  line-height:1.8;
+}
+
+footer{
+  text-align:center;
+  padding:35px 15px;
+  margin-top:50px;
+  border-top:1px solid #292933;
+  color:#777;
+}
+
+/* LOGIN */
+.modal{
+  display:none;
+  position:fixed;
+  z-index:2000;
+  inset:0;
+  background:rgba(0,0,0,.8);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.modal-box{
+  width:100%;
+  max-width:400px;
+  background:#17171f;
+  padding:30px;
+  border-radius:18px;
+  position:relative;
+}
+
+.modal-box h2{
+  margin-bottom:20px;
+}
+
+.modal-box input{
+  width:100%;
+  padding:13px;
+  margin:8px 0;
+  background:#0e0e14;
+  color:white;
+  border:1px solid #333;
+  border-radius:8px;
+}
+
+.close{
+  position:absolute;
+  right:18px;
+  top:12px;
+  font-size:25px;
+  cursor:pointer;
+}
+
+.submit{
+  width:100%;
+  padding:13px;
+  margin-top:10px;
+  border:0;
+  border-radius:8px;
+  background:#ff9f00;
+  font-weight:bold;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+  header{
+    padding:13px 4%;
+  }
+
+  nav{
+    display:none;
+  }
+
+  .hero{
+    min-height:400px;
+  }
+
+  .gallery{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+
+  .card img{
+    height:210px;
+  }
+
+  .card-content{
+    padding:12px;
+  }
+
+  .card h3{
+    font-size:16px;
+  }
+
+  .price{
+    font-size:17px;
+  }
+}
+
+@media(max-width:430px){
+
+  .gallery{
+    grid-template-columns:1fr;
+  }
+
+  .card img{
+    height:300px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>🎨 ArtZone</h1>
-    <p>Digital Art • Gaming Inspired Art • Creative Designs</p>
-  </header>
+<header>
+
+  <div class="logo">
+    🎨 Art<span>Zone</span>
+  </div>
 
   <nav>
-    <a href="#">Home</a>
+    <a href="#home">Home</a>
     <a href="#gallery">Gallery</a>
     <a href="#about">About</a>
   </nav>
 
-  <!-- TOP ADVERTISEMENT -->
-  <div class="ad-box">
-    📢 Advertisement
+  <button class="login-btn" onclick="openLogin()">
+    Login
+  </button>
+
+</header>
+
+
+<section class="hero" id="home">
+
+  <div>
+
+    <h1>
+      Create. <span>Inspire.</span> Sell.
+    </h1>
+
+    <p>
+      Discover amazing digital artwork and gaming-inspired creations.
+    </p>
+
+    <a href="#gallery" class="hero-btn">
+      Explore Gallery
+    </a>
+
   </div>
 
-  <div class="container">
+</section>
 
-    <h2 class="title" id="gallery">
-      🔥 Latest Art
-    </h2>
 
-    <div class="gallery">
+<!-- ADVERTISEMENT AREA -->
 
-      <div class="card">
-        <img
-          src="https://via.placeholder.com/600x700?text=Your+Art"
-          alt="Digital Art">
+<div class="ad">
+  📢 Advertisement
+</div>
 
-        <div class="card-content">
-          <h2>Epic Warrior</h2>
-          <p>Gaming Inspired Digital Art</p>
 
-          <button class="button" onclick="supportArt()">
-            ❤️ Support Artist
-          </button>
+<section class="container" id="gallery">
+
+  <h2 class="section-title">
+    🔥 Explore Art
+  </h2>
+
+
+  <input
+    type="text"
+    id="search"
+    class="search"
+    placeholder="🔎 Search artwork..."
+    onkeyup="searchArt()"
+  >
+
+
+  <div class="categories">
+
+    <button class="category" onclick="filterArt('all')">
+      All
+    </button>
+
+    <button class="category" onclick="filterArt('gaming')">
+      Gaming
+    </button>
+
+    <button class="category" onclick="filterArt('digital')">
+      Digital
+    </button>
+
+    <button class="category" onclick="filterArt('character')">
+      Character
+    </button>
+
+  </div>
+
+
+  <div class="gallery" id="artGallery">
+
+
+    <div class="card" data-category="gaming">
+
+      <img
+        src="https://via.placeholder.com/600x700?text=Gaming+Art"
+        alt="Gaming Art"
+      >
+
+      <div class="card-content">
+
+        <h3>Epic Warrior</h3>
+
+        <p>Gaming Inspired Art</p>
+
+        <div class="price">
+          ₹99
         </div>
-      </div>
 
-      <div class="card">
-        <img
-          src="https://via.placeholder.com/600x700?text=Your+Art"
-          alt="Digital Art">
+        <button
+          class="buy"
+          onclick="buyArt('Epic Warrior')"
+        >
+          ❤️ Buy / Support
+        </button>
 
-        <div class="card-content">
-          <h2>Dark Hero</h2>
-          <p>Original Digital Artwork</p>
-
-          <button class="button" onclick="supportArt()">
-            ❤️ Support Artist
-          </button>
-        </div>
-      </div>
-
-      <div class="card">
-        <img
-          src="https://via.placeholder.com/600x700?text=Your+Art"
-          alt="Digital Art">
-
-        <div class="card-content">
-          <h2>Fire Warrior</h2>
-          <p>Gaming Inspired Artwork</p>
-
-          <button class="button" onclick="supportArt()">
-            ❤️ Support Artist
-          </button>
-        </div>
       </div>
 
     </div>
 
-    <!-- MIDDLE ADVERTISEMENT -->
-    <div class="ad-box">
-      📢 Advertisement
+
+    <div class="card" data-category="digital">
+
+      <img
+        src="https://via.placeholder.com/600x700?text=Digital+Art"
+        alt="Digital Art"
+      >
+
+      <div class="card-content">
+
+        <h3>Dark Hero</h3>
+
+        <p>Digital Artwork</p>
+
+        <div class="price">
+          ₹149
+        </div>
+
+        <button
+          class="buy"
+          onclick="buyArt('Dark Hero')"
+        >
+          ❤️ Buy / Support
+        </button>
+
+      </div>
+
     </div>
 
-    <section id="about">
-      <h2 class="title">About ArtZone</h2>
 
-      <p style="text-align:center;color:#aaa;line-height:1.7;">
-        Welcome to ArtZone! Here you can discover
-        original digital artwork and gaming-inspired creations.
-      </p>
-    </section>
+    <div class="card" data-category="character">
+
+      <img
+        src="https://via.placeholder.com/600x700?text=Character+Art"
+        alt="Character Art"
+      >
+
+      <div class="card-content">
+
+        <h3>Fire Character</h3>
+
+        <p>Original Character Art</p>
+
+        <div class="price">
+          ₹199
+        </div>
+
+        <button
+          class="buy"
+          onclick="buyArt('Fire Character')"
+        >
+          ❤️ Buy / Support
+        </button>
+
+      </div>
+
+    </div>
+
 
   </div>
 
-  <!-- BOTTOM ADVERTISEMENT -->
-  <div class="ad-box">
-    📢 Advertisement
+</section>
+
+
+<!-- MIDDLE AD -->
+
+<div class="ad">
+  📢 Advertisement
+</div>
+
+
+<section class="about" id="about">
+
+  <h2 class="section-title">
+    About ArtZone
+  </h2>
+
+  <p>
+    ArtZone is a digital art gallery for showcasing
+    original artwork and gaming-inspired creations.
+    We support independent creators and digital artists.
+  </p>
+
+</section>
+
+
+<!-- BOTTOM AD -->
+
+<div class="ad">
+  📢 Advertisement
+</div>
+
+
+<footer>
+
+  <p>© 2026 ArtZone</p>
+
+  <p style="margin-top:8px;">
+    Digital Art • Gaming Inspired • Creative Designs
+  </p>
+
+</footer>
+
+
+<!-- LOGIN POPUP -->
+
+<div class="modal" id="loginModal">
+
+  <div class="modal-box">
+
+    <span class="close" onclick="closeLogin()">
+      ×
+    </span>
+
+    <h2>🔐 Login</h2>
+
+    <input
+      type="email"
+      id="email"
+      placeholder="Email"
+    >
+
+    <input
+      type="password"
+      id="password"
+      placeholder="Password"
+    >
+
+    <button class="submit" onclick="login()">
+      Login
+    </button>
+
   </div>
 
-  <footer>
-    © 2026 ArtZone | All Rights Reserved
-  </footer>
+</div>
 
-  <script>
-    function supportArt() {
-      alert(
-        "Thank you for supporting the artist! ❤️\n\n" +
-        "Payment option हम अगले स्टेप में जोड़ेंगे।"
-      );
+
+<script>
+
+function openLogin(){
+  document.getElementById("loginModal").style.display="flex";
+}
+
+function closeLogin(){
+  document.getElementById("loginModal").style.display="none";
+}
+
+function login(){
+
+  let email=document.getElementById("email").value;
+  let password=document.getElementById("password").value;
+
+  if(email==="" || password===""){
+    alert("कृपया Email और Password डालें।");
+    return;
+  }
+
+  alert("Demo Login सफल! असली Login System बाद में जोड़ा जा सकता है।");
+
+}
+
+function buyArt(name){
+
+  alert(
+    "आपने \"" +
+    name +
+    "\" चुना है।\n\n" +
+    "Payment System अगले चरण में जोड़ा जाएगा।"
+  );
+
+}
+
+function searchArt(){
+
+  let input=
+    document.getElementById("search")
+    .value
+    .toLowerCase();
+
+  let cards=
+    document.querySelectorAll(".card");
+
+  cards.forEach(function(card){
+
+    let text=
+      card.innerText.toLowerCase();
+
+    if(text.includes(input)){
+      card.style.display="";
+    }else{
+      card.style.display="none";
     }
-  </script>
+
+  });
+
+}
+
+function filterArt(category){
+
+  let cards=
+    document.querySelectorAll(".card");
+
+  cards.forEach(function(card){
+
+    if(
+      category==="all" ||
+      card.dataset.category===category
+    ){
+      card.style.display="";
+    }else{
+      card.style.display="none";
+    }
+
+  });
+
+}
+
+window.onclick=function(event){
+
+  let modal=
+    document.getElementById("loginModal");
+
+  if(event.target===modal){
+    closeLogin();
+  }
+
+};
+
+</script>
 
 </body>
 </html>
